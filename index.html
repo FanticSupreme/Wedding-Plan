@@ -427,6 +427,197 @@ body{
   }
 }
 
+
+/* FINAL MOBILE FIX — invitation letter page */
+@media (max-width:600px){
+  #letterScreen{
+    align-items:center;
+    justify-content:center;
+    padding:0;
+  }
+
+  #letterScreen .card{
+    width:calc(100vw - 42px);
+    height:calc(100dvh - 125px);
+    max-height:none;
+    min-height:0;
+    padding:20px 17px;
+    margin:0 auto;
+    overflow:hidden;
+  }
+
+  #letterScreen .card:before{inset:9px}
+  #letterScreen .card:after{inset:15px}
+
+  #letterScreen .corner{
+    width:42px;
+    height:42px;
+  }
+  #letterScreen .corner.tl{left:17px;top:17px}
+  #letterScreen .corner.br{right:17px;bottom:17px}
+
+  #letterScreen .card-content{
+    width:100%;
+    max-width:100%;
+    padding:0 8px;
+  }
+
+  #letterScreen .monogram{
+    width:40px;
+    height:40px;
+    font-size:18px;
+    margin-bottom:8px;
+  }
+
+  #letterScreen .card .intro{
+    font-size:7px;
+    line-height:1.55;
+    letter-spacing:1.55px;
+    margin:5px auto 8px;
+    max-width:280px;
+  }
+
+  #letterScreen .card h2{
+    font-size:clamp(32px,8.5vw,45px);
+    line-height:.9;
+    margin:0;
+  }
+
+  #letterScreen .ornament{
+    margin:9px auto 9px;
+    gap:9px;
+  }
+
+  #letterScreen .ornament span{
+    width:38px;
+  }
+
+  #letterScreen .ornament b{
+    font-size:10px;
+  }
+
+  #letterScreen .message.lead{
+    font-size:16px !important;
+    line-height:1.25 !important;
+    margin-bottom:7px;
+  }
+
+  #letterScreen .message.invitation-copy{
+    font-size:8.5px !important;
+    line-height:1.45 !important;
+    max-width:310px;
+    margin:0 auto;
+  }
+
+  #letterScreen .details-grid{
+    gap:6px;
+    margin:11px 0 8px;
+  }
+
+  #letterScreen .highlight-detail{
+    padding:8px 3px;
+    min-height:70px;
+  }
+
+  #letterScreen .highlight-detail .label{
+    font-size:5.5px;
+    letter-spacing:1px;
+    line-height:1.25;
+  }
+
+  #letterScreen .highlight-detail strong{
+    font-size:19px;
+    line-height:1;
+    margin-top:4px;
+  }
+
+  #letterScreen .highlight-detail span{
+    font-size:7px;
+    letter-spacing:1.2px;
+    margin-top:3px;
+  }
+
+  #letterScreen .venue-box{
+    margin-top:7px;
+    padding:7px 4px 6px;
+  }
+
+  #letterScreen .venue-box .label{
+    font-size:5.5px;
+    letter-spacing:1.5px;
+  }
+
+  #letterScreen .venue-box .venue{
+    font-size:20px;
+    line-height:1.05;
+    margin-top:2px;
+  }
+
+  #letterScreen .venue-box .location{
+    font-size:7px;
+    letter-spacing:.8px;
+    margin-top:2px;
+  }
+
+  #letterScreen .closing-line{
+    font-size:12px;
+    line-height:1.15;
+    margin-top:7px;
+  }
+
+  #letterScreen .controls{
+    bottom:max(10px,env(safe-area-inset-bottom));
+    width:auto;
+    padding:0;
+  }
+
+  #letterScreen .next-btn{
+    min-height:42px;
+    padding:11px 25px;
+    font-size:8px;
+    letter-spacing:2px;
+  }
+}
+
+@media (max-width:380px){
+  #letterScreen .card{
+    width:calc(100vw - 30px);
+    height:calc(100dvh - 112px);
+    padding:17px 13px;
+  }
+
+  #letterScreen .card-content{padding:0 5px}
+  #letterScreen .card .intro{font-size:6.5px}
+  #letterScreen .card h2{font-size:30px}
+  #letterScreen .message.lead{font-size:15px !important}
+  #letterScreen .message.invitation-copy{font-size:8px !important}
+  #letterScreen .highlight-detail{min-height:65px;padding:7px 2px}
+  #letterScreen .highlight-detail strong{font-size:17px}
+  #letterScreen .venue-box .venue{font-size:18px}
+  #letterScreen .closing-line{font-size:11px}
+}
+
+@media (max-height:700px) and (max-width:600px){
+  #letterScreen .card{
+    height:calc(100dvh - 105px);
+    padding-top:14px;
+    padding-bottom:14px;
+  }
+
+  #letterScreen .monogram{
+    width:34px;height:34px;font-size:16px;margin-bottom:5px;
+  }
+
+  #letterScreen .card .intro{margin:3px auto 5px}
+  #letterScreen .ornament{margin:6px auto}
+  #letterScreen .message.lead{font-size:14px !important}
+  #letterScreen .message.invitation-copy{font-size:7.5px !important}
+  #letterScreen .details-grid{margin:8px 0 5px}
+  #letterScreen .highlight-detail{min-height:59px;padding:6px 2px}
+  #letterScreen .venue-box{margin-top:5px;padding:5px 3px}
+  #letterScreen .closing-line{margin-top:5px;font-size:10px}
+}
+
 </style>
 </head>
 <body>
