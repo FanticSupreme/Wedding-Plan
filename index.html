@@ -369,6 +369,64 @@ body{
   .closing-line{font-size:14px;margin-top:10px}
 }
 
+
+/* Refined opening screen: no oversized title */
+.cover{
+  width:min(700px,88vw);
+  padding:42px 34px 36px;
+}
+.opening-ornament{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+  margin:18px auto 24px;
+}
+.opening-ornament span{
+  width:72px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.opening-ornament span:last-child{
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
+.opening-ornament b{
+  color:var(--gold-light);
+  font-size:12px;
+  font-weight:400;
+}
+.opening-message{
+  margin:0 auto 34px !important;
+  max-width:560px !important;
+  font-family:"Cormorant Garamond",serif !important;
+  font-size:clamp(20px,2.3vw,27px) !important;
+  line-height:1.5 !important;
+  letter-spacing:.3px !important;
+  text-transform:none !important;
+  color:#e5d5bd !important;
+}
+@media(max-width:600px){
+  .cover{
+    width:92vw;
+    padding:34px 20px 28px;
+  }
+  .eyebrow{
+    font-size:8px;
+    letter-spacing:3px;
+  }
+  .opening-ornament{
+    margin:15px auto 20px;
+  }
+  .opening-ornament span{
+    width:42px;
+  }
+  .opening-message{
+    font-size:18px !important;
+    line-height:1.5 !important;
+    margin-bottom:28px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -381,7 +439,8 @@ body{
   <section class="screen active" id="coverScreen">
     <div class="cover">
       <div class="eyebrow">A Wedding Invitation</div>
-      <h1>Wedding <span class="amp">&</span> Invitation</h1>
+    <div class="opening-ornament"><span></span><b>✦</b><span></span></div>
+  
       <p>A beautiful chapter is about to begin…<br>
 and we would be honoured to have you<br>
 with us as we celebrate love, laughter,<br>
