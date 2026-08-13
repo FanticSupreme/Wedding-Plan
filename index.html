@@ -618,9 +618,73 @@ body{
   #letterScreen .closing-line{margin-top:5px;font-size:10px}
 }
 
+
+/* Background music control */
+.music-toggle{
+  position:fixed;
+  z-index:50;
+  top:22px;
+  right:22px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(229,201,140,.55);
+  background:rgba(20,13,11,.48);
+  color:#f4e7d3;
+  padding:9px 13px;
+  border-radius:999px;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  cursor:pointer;
+  font-family:Montserrat,sans-serif;
+  font-size:8px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  transition:.3s ease;
+}
+.music-toggle:hover{
+  border-color:var(--gold-light);
+  background:rgba(196,154,82,.16);
+}
+.music-icon{
+  display:inline-grid;
+  place-items:center;
+  width:18px;
+  height:18px;
+  border:1px solid rgba(229,201,140,.4);
+  border-radius:50%;
+  color:var(--gold-light);
+  font-size:11px;
+}
+.music-toggle.playing .music-icon{
+  animation:musicPulse 1.2s ease-in-out infinite;
+}
+@keyframes musicPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 rgba(229,201,140,0)}
+  50%{transform:scale(1.12);box-shadow:0 0 14px rgba(229,201,140,.35)}
+}
+@media(max-width:600px){
+  .music-toggle{
+    top:max(12px,env(safe-area-inset-top));
+    right:12px;
+    padding:8px 10px;
+    font-size:7px;
+    letter-spacing:1.1px;
+  }
+  .music-text{display:none}
+  .music-icon{width:25px;height:25px;font-size:13px}
+}
+
 </style>
 </head>
 <body>
+<audio id="weddingMusic" preload="auto" loop>
+  <source src="assets/wedding_music.mp3" type="audio/wav">
+</audio>
+<button class="music-toggle" id="musicToggle" aria-label="Toggle wedding music">
+  <span class="music-icon">♫</span>
+  <span class="music-text">Music On</span>
+</button>
 <div class="stage">
   <div class="ambient"><div class="orb one"></div><div class="orb two"></div><div class="orb three"></div></div>
   <div class="particles" id="particles"></div>
@@ -731,6 +795,33 @@ const screens = {
 
 const envelope = document.getElementById('envelope');
 const openBtn = document.getElementById('openBtn');
+const weddingMusic = document.getElementById('weddingMusic');
+const musicToggle = document.getElementById('musicToggle');
+const musicText = musicToggle.querySelector('.music-text');
+
+weddingMusic.volume = 0.22;
+weddingMusic.loop = true;
+
+function updateMusicUI(){
+  const playing = !weddingMusic.paused;
+  musicToggle.classList.toggle('playing', playing);
+  musicText.textContent = playing ? 'Music On' : 'Music Off';
+}
+
+function startMusic(){
+  weddingMusic.play().then(updateMusicUI).catch(updateMusicUI);
+}
+
+musicToggle.addEventListener('click', () => {
+  if(weddingMusic.paused){
+    startMusic();
+  }else{
+    weddingMusic.pause();
+    updateMusicUI();
+  }
+});
+
+updateMusicUI();
 
 function showScreen(name){
   Object.values(screens).forEach(s => {
@@ -740,6 +831,7 @@ function showScreen(name){
 }
 
 openBtn.addEventListener('click', () => {
+  startMusic();
   envelope.classList.add('open');
   openBtn.disabled = true;
   setTimeout(() => showScreen('letterScreen'), 850);
